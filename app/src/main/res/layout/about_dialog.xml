@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#eaeaea">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thông tin"
+        android:padding="16dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:paddingLeft="28dp"
+        android:background="#9C27B0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ai là Triệu Phú"
+        android:textSize="16sp"
+        android:textColor="#8b8787"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingTop="16dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="32dp"
+        android:paddingBottom="16dp"
+        android:textColor="#8b8787"
+        android:text="Phiên bản: 1.0.0"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:textColor="#8b8787"
+        android:paddingBottom="16dp"
+        android:text="Đội ngũ:"/>
+
+    <TextView
+        android:paddingBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:textColor="#8b8787"
+        android:text="Phan Trần Huy"/>
+    <TextView
+        android:paddingBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:textColor="#8b8787"
+        android:text="Lương Quốc Trung"/>
+    <TextView
+        android:paddingBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:textColor="#8b8787"
+        android:text="Nguyễn Trần Minh Trí"/>
+    <TextView
+        android:paddingBottom="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:textColor="#8b8787"
+        android:text="Nguyễn Văn Nhân"/>
+    <TextView
+        android:paddingBottom="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="60dp"
+        android:textColor="#8b8787"
+        android:text="Phạm Quốc Khoa"/>
+
+
+</LinearLayout>
