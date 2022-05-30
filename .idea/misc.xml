@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/btn_5050_bg.xml" value="0.1" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/btn_audience_bg.xml" value="0.1" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/btn_call_bg.xml" value="0.1" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/btn_change_bg.xml" value="0.105" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/btn_stop_bg.xml" value="0.105" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/drawable/progressbar_time.xml" value="0.105" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/layout/about_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/layout/activity_high_score.xml" value="0.264" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/layout/activity_player.xml" value="0.25416666666666665" />
+        <entry key="..\:/AiLaTrieuPhu/app/src/main/res/layout/score_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/My Work/Nam 3/Hoc ki 6/Lap trinh di dong/Projects/AiLaTrieuPhu/app/src/main/res/drawable/btn_radius.xml" value="0.154" />
         <entry key="..\:/My Work/Nam 3/Hoc ki 6/Lap trinh di dong/Projects/AiLaTrieuPhu/app/src/main/res/layout/about_dialog.xml" value="0.275" />
         <entry key="..\:/My Work/Nam 3/Hoc ki 6/Lap trinh di dong/Projects/AiLaTrieuPhu/app/src/main/res/layout/activity_main.xml" value="0.2" />
