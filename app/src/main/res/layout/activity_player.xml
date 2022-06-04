@@ -203,8 +203,8 @@
         </LinearLayout>
 
     </LinearLayout>
-<!--    <include layout="@layout/player_layout_money"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"/>-->
+    <include layout="@layout/player_layout_money"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"/>
 </androidx.drawerlayout.widget.DrawerLayout >

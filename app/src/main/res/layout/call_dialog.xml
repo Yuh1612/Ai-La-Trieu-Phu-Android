@@ -2,188 +2,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="32dp"
     android:orientation="vertical"
+    android:gravity="center"
     >
     <RelativeLayout
-        android:background="@drawable/player_layout_help_call_audience_background"
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
-        <RelativeLayout
-            android:id="@+id/rl_1"
-            android:layout_width="match_parent"
-            android:layout_height="240dp"
+        android:id="@+id/rl_calls"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:padding="48dp"
+        android:gravity="center"
+        android:background="@drawable/player_layout_help_call_audience_background">
+
+        <LinearLayout
+            android:id="@+id/ln_answer"
+            android:visibility="gone"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_alignParentTop="true">
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/ln_1"
+            <TextView
+                android:id="@+id/tv_answer"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:text="Theo tôi đáp án đúng là A"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#ffbe1c" />
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:text="Đóng"
+                android:textColor="#ffffff"
+                android:textAllCaps="false"
+                android:background="@drawable/dialog_confirm_background_button"/>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_pesent_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/bar_1"
-                    android:gravity="center"
-                    android:text="0%"
-                    android:textColor="#ffffff" />
+        <LinearLayout
+            android:id="@+id/ln_call_01"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/bar_1"
-                    android:layout_width="32dp"
-                    android:layout_height="0dp"
-                    android:background="#098" />
+            <ImageButton
+                android:background="@drawable/btn_help_call_01"
+                android:id="@+id/btn_help_01"
+                android:layout_width="72dp"
+                android:layout_height="72dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:text="A"
-                    android:textSize="18sp"
-                    android:textColor="#dbe206"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ln_2"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="28dp"
-                android:layout_toRightOf="@id/ln_1"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:text="Bác sĩ"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_pesent_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/bar_1"
-                    android:gravity="center"
-                    android:text="0%"
-                    android:textColor="#ffffff" />
+        <LinearLayout
+            android:id="@+id/ln_call_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/bar_2"
-                    android:layout_width="32dp"
-                    android:layout_height="0dp"
-                    android:background="#098" />
+            <ImageButton
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/btn_help_call_02"
+                android:id="@+id/btn_help_02" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:text="B"
-                    android:textSize="18sp"
-                    android:textColor="#dbe206"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ln_3"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="28dp"
-                android:layout_toRightOf="@id/ln_2"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:text="Giáo sư"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_pesent_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/bar_1"
-                    android:gravity="center"
-                    android:text="0%"
-                    android:textColor="#ffffff" />
+        <LinearLayout
+            android:id="@+id/ln_call_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/bar_3"
-                    android:layout_width="32dp"
-                    android:layout_height="0dp"
-                    android:background="#098" />
+            <ImageButton
+                android:id="@+id/btn_help_03"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/btn_help_call_03"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:text="C"
-                    android:textSize="18sp"
-                    android:textColor="#dbe206"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ln_4"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="28dp"
-                android:layout_toRightOf="@id/ln_3"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:text="Kĩ sư"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_pesent_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/bar_1"
-                    android:gravity="center"
-                    android:text="0%"
-                    android:textColor="#ffffff" />
+        <LinearLayout
+            android:id="@+id/ln_call_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/bar_4"
-                    android:layout_width="32dp"
-                    android:layout_height="0dp"
-                    android:background="#098" />
+            <ImageButton
+                android:id="@+id/btn_help_04"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/btn_help_call_04"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:text="D"
-                    android:textSize="18sp"
-                    android:textColor="#dbe206"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </RelativeLayout>
-        <View
-            android:layout_width="250dp"
-            android:layout_centerHorizontal="true"
-            android:layout_height="2dp"
-            android:layout_marginTop="203dp"
-            android:background="#ffffff"/>
-        <Button
-            android:id="@+id/btn_close"
-            android:layout_width="102dp"
-            android:layout_height="28dp"
-            android:text="Đóng"
-            android:layout_marginTop="8dp"
-            android:layout_below="@id/rl_1"
-            android:layout_centerHorizontal="true"
-            android:textColor="#ffffff"
-            android:textAllCaps="false"
-            android:background="@drawable/dialog_confirm_background_button"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phóng viên"
+                android:textColor="#ffffff" />
+        </LinearLayout>
 
     </RelativeLayout>
-
     <TextView
         android:layout_width="172dp"
         android:layout_height="50dp"
-        android:text="Ý kiến khán giả"
+        android:text="Ý kiến chuyên gia"
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="#000000"
         android:background="@drawable/player_layout_help_call_title_background"
-        android:layout_marginTop="-323dp"/>
+        android:layout_marginTop="-322dp"/>
 
 </LinearLayout>
