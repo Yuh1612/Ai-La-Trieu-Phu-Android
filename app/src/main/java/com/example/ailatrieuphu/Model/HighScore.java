@@ -9,16 +9,27 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class HighScore {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
     @NonNull
     private String name;
 
     @ColumnInfo
-    private String score;
+    private int score;
 
-    public HighScore(@NonNull String name, String score) {
+    public HighScore(int id, @NonNull String name, int score) {
+        this.id = id;
         this.name = name;
         this.score = score;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @NonNull
@@ -30,11 +41,11 @@ public class HighScore {
         this.name = name;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }

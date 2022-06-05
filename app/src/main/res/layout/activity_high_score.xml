@@ -5,8 +5,18 @@
     android:id="@+id/activity_high_score"
     android:orientation="vertical"
     android:background="@drawable/player_money_background">
+
+    <Button
+        android:id="@+id/btn_back"
+        android:padding="10dp"
+        android:layout_width= "wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text= "Quay lại"
+        android:background="@drawable/btn_radius"
+        android:textAllCaps="false" />
     <TextView
-        android:paddingTop="72dp"
+
         android:paddingBottom="16dp"
         android:layout_width="match_parent"
         android:gravity="center"
@@ -15,12 +25,12 @@
         android:textStyle="bold"
         android:textColor="#ecec09"
         android:layout_height="wrap_content"
-        android:text="High score"/>
+        android:text="Kỷ lục"/>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:padding="16dp"
-        android:id="@android:id/list"
+        android:id="@+id/rv_highscore"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></ListView>
+        android:layout_weight="1"/>
 </LinearLayout>

@@ -10,7 +10,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuestionApiService {
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "https://trungluongwapi.herokuapp.com/";
     private QuestionApi questionApi;
 
     public  QuestionApiService(){
@@ -22,4 +22,6 @@ public class QuestionApiService {
                 .create(QuestionApi.class);
     }
     public Single<List<Question>> getQuestions() { return questionApi.getQuestions();}
+
+    public Single<Question> getQuestionChange(String id) {return  questionApi.getQuestionChang(id);}
 }

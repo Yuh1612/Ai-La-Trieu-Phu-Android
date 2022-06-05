@@ -8,7 +8,7 @@ import java.util.List;
 
 @Dao
 public interface HighScoreDAO {
-    @Query("Select * from HighScore")
+    @Query("select * from HighScore ORDER BY Score DESC")
     public List<HighScore> getAllHighScore();
 
     @Insert

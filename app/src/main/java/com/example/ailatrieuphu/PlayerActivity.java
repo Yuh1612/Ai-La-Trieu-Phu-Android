@@ -4,17 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -46,12 +44,15 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private AudienceDialog audienceDialog;
     private CallDialog callDialog;
     private Runnable runnable;
-    private Runnable runnableTimer;
-    private Handler handler;
-    private Random random;
+    private final Runnable runnableTimer;
+    private final Handler handler;
+    private final Random random;
     private DrawerLayout.DrawerListener drawerListener;
-    private List<Question> questions;
-    private TextView tvTimer, tvMoney, tvCase[], tvQuestion, tvLevel;
+    private TextView tvTimer;
+    private TextView tvMoney;
+    private final TextView[] tvCase;
+    private TextView tvQuestion;
+    private TextView tvLevel;
     private ImageButton btnCall, btnAudience, btnStop, btn5050, btnChange;
     private ProgressBar pgTimer;
     private boolean isPlaying;
@@ -59,7 +60,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private int timer;
     private int level;
     
-    private QuestionApiService questionApiService;
+    private final QuestionApiService questionApiService;
+    private final List<Question> questions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +75,6 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         audienceDialog = new AudienceDialog(this);
         callDialog = new CallDialog(this);
 
-
         findViewByIds();
         setEvents();
         loadRules();
@@ -85,41 +86,38 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         isPlaying = false;
         isReady = false;
 
-//        questionApiService = new QuestionApiService();
+        questionApiService = new QuestionApiService();
         questions = new ArrayList<>();
-//        questionApiService.getQuestions()
-//                .subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribeWith(new DisposableSingleObserver<List<Question>>() {
-//                    @Override
-//                    public void onSuccess(@NonNull List<Question> ques) {
-//                        for (Question question: ques) {
-//                            Log.d("DEBUG", question.getQuestion());
-//                            questions.add(question);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull Throwable e) {
-//                        Log.d("DEBUG",e.getMessage());
-//                    }
-//                });
+        questionApiService.getQuestions()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableSingleObserver<List<Question>>() {
+                    @Override
+                    public void onSuccess(@NonNull List<Question> ques) {
+                        questions.addAll(ques);
+                    }
 
-        questions.add(new Question(1,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(2,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(3,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(4,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(5,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(6,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(7,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(8,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(9,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(10,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(11,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(12,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(13,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(14,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
-        questions.add(new Question(15,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.d("DEBUG",e.getMessage());
+                    }
+                });
+
+//        questions.add(new Question(1,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(2,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(3,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(4,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(5,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(6,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(7,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(8,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(9,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(10,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(11,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(12,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(13,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(14,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
+//        questions.add(new Question(15,"1+1","2",new String[]{"1","2","3","4"},1,"math"));
 
         level = 1;
         tvCase = new TextView[4];
@@ -131,12 +129,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 if (timer == 0) {
                     isPlaying = false;
                     noticeDialog.setNotification("Hết giờ !", "Đóng", null, null);
-                    noticeDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                        @Override
-                        public void onDismiss(DialogInterface dialog) {
-                            saveScore(false);
-                        }
-                    });
+                    noticeDialog.setOnDismissListener(dialog -> saveScore(false));
                     noticeDialog.show();
                     return;
                 }
@@ -146,24 +139,24 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void findViewByIds(){
-        drawerLayout = (DrawerLayout) findViewById(R.id.activity_player);
-        layoutPlay = (LinearLayout) findViewById(R.id.ln_play);
-        tvCase[0] = (TextView) findViewById(R.id.tv_case_a);
-        tvCase[1] = (TextView) findViewById(R.id.tv_case_b);
-        tvCase[2] = (TextView) findViewById(R.id.tv_case_c);
-        tvCase[3] = (TextView) findViewById(R.id.tv_case_d);
-        tvMoney = (TextView) findViewById(R.id.tv_money);
-        tvTimer = (TextView) findViewById(R.id.tv_timer);
-        tvLevel = (TextView) findViewById(R.id.tv_level);
-        tvQuestion = (TextView) findViewById(R.id.tv_question);
-        pgTimer = (ProgressBar) findViewById(R.id.pg_timer);
-        layoutMoney = (MoneyLayout) findViewById(R.id.layout_money);
+        drawerLayout = findViewById(R.id.activity_player);
+        layoutPlay = findViewById(R.id.ln_play);
+        tvCase[0] = findViewById(R.id.tv_case_a);
+        tvCase[1] = findViewById(R.id.tv_case_b);
+        tvCase[2] = findViewById(R.id.tv_case_c);
+        tvCase[3] = findViewById(R.id.tv_case_d);
+        tvMoney = findViewById(R.id.tv_money);
+        tvTimer = findViewById(R.id.tv_timer);
+        tvLevel = findViewById(R.id.tv_level);
+        tvQuestion = findViewById(R.id.tv_question);
+        pgTimer =  findViewById(R.id.pg_timer);
+        layoutMoney = findViewById(R.id.layout_money);
         layoutMoney.findViewByIds();
-        btn5050 = (ImageButton) findViewById(R.id.btn_5050);
-        btnAudience = (ImageButton) findViewById(R.id.btn_audience);
-        btnChange = (ImageButton) findViewById(R.id.btn_change);
-        btnCall = (ImageButton) findViewById(R.id.btn_call);
-        btnStop = (ImageButton) findViewById(R.id.btn_stop);
+        btn5050 = findViewById(R.id.btn_5050);
+        btnAudience = findViewById(R.id.btn_audience);
+        btnChange = findViewById(R.id.btn_change);
+        btnCall = findViewById(R.id.btn_call);
+        btnStop = findViewById(R.id.btn_stop);
         drawerListener = new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
@@ -208,7 +201,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private void loadRules() {
         drawerLayout.openDrawer(GravityCompat.START);
         noticeDialog.setCancelable(false);
-        noticeDialog.setNotification("Bạn đã sẵn sàng chơi với chúng tôi ?", "Sẵn sàng", "Bỏ qua", new View.OnClickListener() {
+        noticeDialog.setNotification("Bạn đã sẵn sàng chơi với chúng tôi ?", "Sẵn sàng", "Quay lại", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
@@ -227,12 +220,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 }
             }
         });
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                noticeDialog.show();
-            }
-        }, 3000);
+        handler.postDelayed(() -> noticeDialog.show(), 3000);
     }
 
     private void startGame() {
@@ -267,14 +255,10 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         timer = 30;
         pgTimer.setVisibility(View.VISIBLE);
 
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                isPlaying = true;
-                setClickAble(true);
-            }
-        };
-        handler.postDelayed(runnable, 1200);
+        handler.postDelayed(() -> {
+            isPlaying = true;
+            setClickAble(true);
+        }, 1200);
     }
 
     private void setClickAble(boolean b) {
@@ -293,7 +277,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         Question ques = questions.get(level - 1);
 
         for(int i = 0; i < 4; i++){
-            if(ques.getAnswer() == ques.getChoices()[i]){
+            if(ques.getAnswer().equals(ques.getChoices()[i])){
                 return i;
             }
         }
@@ -305,24 +289,14 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         v.setBackgroundResource(R.drawable.player_answer_background_wrong);
         tvCase[getTrueAnswer()].setBackgroundResource(R.drawable.player_answer_background_true);
         tvCase[getTrueAnswer()].startAnimation(AnimationUtils.loadAnimation(v.getContext(), R.anim.fade_loop));
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                saveScore(false);
-            }
-        }, 2000);
+        handler.postDelayed(() -> saveScore(false), 2000);
     }
 
     private void answerTrue(final View v) {
         tvMoney.setText(layoutMoney.getMoney(level));
         v.setBackgroundResource(R.drawable.player_answer_background_true);
         v.startAnimation(AnimationUtils.loadAnimation(v.getContext(), R.anim.fade_loop));
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getNewQuestion();
-            }
-        }, 2000);
+        handler.postDelayed(() -> getNewQuestion(), 2000);
     }
 
     private void getNewQuestion() {
@@ -340,12 +314,9 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         layoutMoney.setBackGroundLevel(level);
         drawerLayout.openDrawer(GravityCompat.START);
         level++;
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                drawerLayout.closeDrawer(GravityCompat.START);
-                setQuestion();
-            }
+        handler.postDelayed(() -> {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            setQuestion();
         }, 2000);
     }
 
@@ -354,14 +325,11 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         isPlaying = false;
         pgTimer.setVisibility(View.GONE);
         v.setBackgroundResource(R.drawable.player_answer_background_selected);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (getTrueAnswer() == id) {
-                    answerTrue(v);
-                } else {
-                    answerFalse(v);
-                }
+        handler.postDelayed(() -> {
+            if (getTrueAnswer() == id) {
+                answerTrue(v);
+            } else {
+                answerFalse(v);
             }
         }, 2000);
     }
@@ -373,28 +341,24 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
             if (stopGame) {
                 scoreDialog.setScore(tvMoney.getText().toString());
             } else {
-                if (level < 5) {
-                    scoreDialog.setScore("200,000");
-                } else if (level < 10) {
+                if (level <= 5) {
+                    scoreDialog.setScore(tvMoney.getText().toString());
+                } else if (level <= 10) {
                     scoreDialog.setScore("2,000,000");
-                } else if (level < 15) {
+                } else if (level <= 15) {
                     scoreDialog.setScore("22,000,000");
                 } else {
                     scoreDialog.setScore("150,000,000");
                 }
             }
-            scoreDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    finish();
-                }
-            });
+            scoreDialog.setOnDismissListener(dialog -> finish());
             scoreDialog.show();
         } else {
             finish();
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -449,12 +413,9 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                             setClickAble(false);
                             callDialog.setTrueAnswer(getTrueAnswer());
                             callDialog.show();
-                            callDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-                                    isPlaying = true;
-                                    setClickAble(true);
-                                }
+                            callDialog.setOnDismissListener(dialog -> {
+                                isPlaying = true;
+                                setClickAble(true);
                             });
                         }
                         noticeDialog.dismiss();
@@ -479,13 +440,40 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                             audienceDialog.prepareVote(getTrueAnswer(), cs);
                             audienceDialog.show();
                             audienceDialog.voteAnswer();
-                            audienceDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                @Override
-                                public void onDismiss(DialogInterface dialog) {
-                                    isPlaying = true;
-                                    setClickAble(true);
-                                }
+                            audienceDialog.setOnDismissListener(dialog -> {
+                                isPlaying = true;
+                                setClickAble(true);
                             });
+                        }
+                        noticeDialog.dismiss();
+                    }
+                });
+                noticeDialog.show();
+                break;
+            case R.id.btn_change:
+                noticeDialog.setNotification("Bạn thực sự muốn đổi câu hỏi ?", "Đồng ý", "Hủy bỏ", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (v.getId() == R.id.btn_ok) {
+                            questionApiService.getQuestionChange(questions.get(level-1).getId())
+                                    .subscribeOn(Schedulers.newThread())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribeWith(new DisposableSingleObserver<Question>() {
+                                        @Override
+                                        public void onSuccess(@NonNull Question question) {
+                                            questions.set(level-1, question);
+                                            setQuestion();
+                                            tvTimer.setText(30 + "");
+                                            btnChange.setEnabled(false);
+                                        }
+
+                                        @Override
+                                        public void onError(@NonNull Throwable e) {
+                                            Log.d("DEBUG",e.getMessage());
+                                        }
+                                    });
+
+
                         }
                         noticeDialog.dismiss();
                     }

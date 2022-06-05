@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.ailatrieuphu.Dialogs.AboutDialog;
+import com.example.ailatrieuphu.HighScoreActivity;
 import com.example.ailatrieuphu.PlayerActivity;
 import com.example.ailatrieuphu.R;
 
@@ -43,12 +44,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Log.d("DEBUG","Ok");
             Intent intent = new Intent(getContext(), PlayerActivity.class);
             startActivity(intent);
-
         }
         else if(view.getId() == R.id.btn_about){
             Log.d("DEBUG","Ok1");
             AboutDialog aboutDialog = new AboutDialog(getContext());
             aboutDialog.show();
+        }
+        else if(view.getId() == R.id.btn_high_score){
+            Log.d("DEBUG","Ok2");
+            Intent intent = new Intent(getContext(), HighScoreActivity.class);
+            startActivity(intent);
         }
     }
 }
