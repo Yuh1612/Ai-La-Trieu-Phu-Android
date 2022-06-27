@@ -30,7 +30,7 @@ Và 4 sự trợ giúp:
 
 <table>
   <tr>
-    <td><img src="https://drive.google.com/uc?export=view&id=1OcOkFsoCcAiohbbAjogwDRsnb2Yjr6Es" width=360 height=640></td>
+    <td><img src="https://drive.google.com/uc?export=view&id=1FMZr2objTO1SS4DjEYeuHGsnELE8yDGD" width=360 height=640></td>
     <td><img src="https://drive.google.com/uc?export=view&id=1FQ1i5xPyR0evyyUdd8RFYa8KkIx8xsLA" width=360 height=640></td>
   </tr>
   <tr>
